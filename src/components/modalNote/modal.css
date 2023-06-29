@@ -1,0 +1,88 @@
+.overlay {
+    width: 100vw;
+    height: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-container {
+    width: 500px;
+    min-height: 100px;
+    background: #fff;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+    padding: 20px;
+    max-height: 500px;
+}
+
+.encabezado-modal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.encabezado-modal h3 {
+    font-weight: 500;
+    font-size: 16px;
+    color: #1766DC;
+}
+
+.button-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.header-note {
+    display: flex;
+    
+}
+
+.header-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: beige;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.content-notes-modal {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+}
+
+.modal-note {
+    height: 50%;
+}
+
+.button-send-func {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: beige;
+    border: none;
+}
+
+.container-button-send {
+    display: flex;
+    justify-content: center;
+}
