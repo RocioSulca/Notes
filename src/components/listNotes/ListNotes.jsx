@@ -1,34 +1,54 @@
 import './listNotes.css'
-import React, { useState } from "react";
-import { db } from "../../firebase/firebaseConfig";
-import { collection, getDocs, query } from "firebase/firestore";
+import React, { useState, useEffect } from "react";
+import {getOrdersFirebase} from '../../firebase/firebaseFunction'
+import { AiOutlineDelete } from "react-icons/ai";
+import {deleteNotes} from "../../firebase/firebaseFunction";
+import { Link } from "react-router-dom";
+import { AiFillEdit } from "react-icons/ai";
 
-function Notes() {
+
+
+function ListNotes() {
 
   const [arrayOrderNotes, setArrayOrderNotes] = useState([]);
+  
+  
 
-  const getOrdersFirebase = async () => {
-    const arrayProduct = [];
-    const querySnapshot = await getDocs(query(collection(db, "Notes")));
-    querySnapshot.forEach((doc) => {
-      arrayProduct.push({ id: doc.id, ...doc.data() });
-    });
-    return setArrayOrderNotes(arrayProduct);
-  };
+  useEffect(() => {
+   
 
-  getOrdersFirebase();
+    const fetchNotes = async () => {
+      try {
+        const result = await getOrdersFirebase();
+        setArrayOrderNotes(result);
+      } catch (error) {
+        console.log("Error fetching notes:", error);
+      }
+    };
+
+    fetchNotes();
+  }, [])
+
+  
+  // getOrdersFirebase(setArrayOrderNotes);
+  console.log(arrayOrderNotes)
 
 
   return (
     <>
       <div className="notes-list-container" >
-        {arrayOrderNotes.map((item, index) => {
+        {arrayOrderNotes.map((item) => {
 
           return (
 
-            <div className='note-list' key={index}>
-              <h3> {item.title} </h3>
+            <div className='note-list' key={item.id}>
+              
               <p> {item.note} </p>
+              <button onClick={() => {deleteNotes(item.id)}}>
+                <AiOutlineDelete />
+            </button>
+            
+            <Link to={`/note/${item.id}`}><AiFillEdit></AiFillEdit></Link>
             </div>
 
           )
@@ -39,4 +59,4 @@ function Notes() {
   )
 }
 
-export default Notes;
+export default ListNotes;

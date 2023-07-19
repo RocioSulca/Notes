@@ -6,11 +6,7 @@ import './modal.css'
 function AddNotes() {
 
     const [modalState, setModalState] = useState(false);
-    let [title, setTitle] = useState('');
     let [note, setNote] = useState('');
-    // 
-    let [isImportant, setIsImportant] = useState(false)
-
 
 
     return (
@@ -22,8 +18,9 @@ function AddNotes() {
             <button className="add-button" onClick={() => setModalState(!modalState)}>
                 <AiOutlinePlusCircle /> AGREGAR NOTAS
             </button>
-            <ModalNotes modalState={modalState} setModalState={setModalState} note={note} setNote={setNote} title={title} setTitle={setTitle} isImportant={isImportant} setIsImportant={setIsImportant} />
-
+            <ModalNotes modalState={modalState} setModalState={setModalState} note={note} setNote={setNote} />
+            {/*Aqui va a ir ListNotes, se le pasa las const para usar, en ListNotes se le pasa el boton de editar, que a su vez
+        se le pasan las const para usar y todo se usa en edit Notes */}
         </>
     )
 }

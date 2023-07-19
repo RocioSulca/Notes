@@ -1,30 +1,31 @@
-// import { doc, setDoc } from "firebase/firestore";
-import { db } from "./firebaseConfig"
-import { collection, addDoc, updateDoc } from "firebase/firestore";
-import "../components/modalNote/modal.css"
+import { collection, getDocs, addDoc, deleteDoc, doc  } from "firebase/firestore";
+import { db } from "./firebaseConfig";
 
-function FirebaseFunction({ note, setNote, title, setTitle, isImportant, setIsImportant, modalState, setModalState }) {
 
-  const sendNotes = () => {
+
+
+export const getOrdersFirebase = async (callback) => {
+    const arrayProduct = [];
+    const querySnapshot = await getDocs(collection(db, "Notes"));
+    querySnapshot.forEach((doc) => {
+      arrayProduct.push({ id: doc.id, ...doc.data() });
+    });
+    return arrayProduct;
+  };
+
+export const sendNotes = ( note, setNote) => {
     const docRef = addDoc(collection(db, "Notes"), {
-      title: title,
+
       note: note,
       //isImportant: isImportant
     }).then(() => {
       setNote('');
-      setTitle('');
     });
+    //getOrdersFirebase()
     return docRef
   }
 
-
-  return (
-    <>
-      <div className="container-button-send">
-        <button onClick={() => sendNotes() && setModalState(!modalState)} disabled={!note || !title} className="button-send-func">CREAR NOTA</button>
-      </div>
-    </>
-  )
-}
-
-export default FirebaseFunction;
+ export const deleteNotes = async (id) => {
+  await deleteDoc(doc(db,'Notes', id));
+  getOrdersFirebase()
+ }
