@@ -11,7 +11,7 @@ function AddNotes() {
                 <h1>NOTITAS </h1>
                 <p className="header-icon"><AiOutlineSchedule /></p>
             </section>
-            <section>
+            <section className="add-notes-icon">
                 <Link to='/create' className="add-notes"><AiOutlinePlusCircle /> AGREGAR NOTAS</Link >
             </section>
         </>

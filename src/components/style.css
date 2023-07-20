@@ -109,6 +109,26 @@ h1 {
     flex-direction: column;
 }
 
+.container-not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2, h4, .back-home {
+    color:#FFC700
+}
+
+h2 {
+    font-size: 90px;
+    margin-top: 20%;
+    margin-bottom: -20px;
+}
+
+h4, .back-home {
+    font-size: 30px;
+}
+
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
@@ -138,6 +158,9 @@ h1 {
     .title-container {
         margin-top: 20px;
     }
+    h2 {
+        margin-top: 20%;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -149,5 +172,8 @@ h1 {
     .add-notes {
         padding: 10px;
         margin-left: 3%;
+    }
+    h2 {
+        margin-top: 10%;
     }
 }
