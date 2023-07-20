@@ -4,11 +4,9 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 
-function EditNotes({ arrayOrderNotes }) {
+function EditNotes() {
 
     const [notes, setNotes] = useState('');
-   
-
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -17,7 +15,6 @@ function EditNotes({ arrayOrderNotes }) {
         const noteSnap = await getDoc(noteRef);
 
         if (noteSnap.exists()) {
-        
             setNotes(noteSnap.data().note);
         } else {
             console.log('no existe');
@@ -26,18 +23,13 @@ function EditNotes({ arrayOrderNotes }) {
 
     const updateNotes = async (note, id) => {
         const docRef = doc(db, "Notes", id)
-        const data = {note: note}
-          
+        const data = { note: note }
         await updateDoc(docRef, data)
         navigate('/')
-       } 
+    }
 
     useEffect(() => {
-        
-
         getProductById(id);
-
-
     }, [id]);
 
 
@@ -45,14 +37,14 @@ function EditNotes({ arrayOrderNotes }) {
     return (
         <>
 
-           
+
             <div className="content-notes-modal">
                 <label>NOTA</label>
                 <textarea className="modal-note" value={notes} onChange={(ev) => setNotes(ev.target.value)}></textarea>
             </div>
 
             <div className="container-button-send">
-                <button onClick={() => updateNotes(notes, id) } className="button-send-func">CREAR NOTA</button>
+                <button onClick={() => updateNotes(notes, id)} className="button-send-func">CREAR NOTA</button>
             </div>
 
         </>
