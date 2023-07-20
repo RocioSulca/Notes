@@ -1,7 +1,8 @@
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 
 function EditNotes() {
@@ -36,15 +37,17 @@ function EditNotes() {
 
     return (
         <>
-
+            <section className='title-container'>
+                <Link to='/' className='back-icon'><AiOutlineArrowLeft /></Link>
+                <h1>EDITA TU NOTA</h1>
+            </section>
 
             <div className="content-notes-modal">
-                <label>NOTA</label>
                 <textarea className="modal-note" value={notes} onChange={(ev) => setNotes(ev.target.value)}></textarea>
             </div>
 
             <div className="container-button-send">
-                <button onClick={() => updateNotes(notes, id)} className="button-send-func">CREAR NOTA</button>
+                <button onClick={() => updateNotes(notes, id)} className="button-send-func">EDITAR NOTA</button>
             </div>
 
         </>

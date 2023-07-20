@@ -1,12 +1,12 @@
-import './listNotes.css'
+import './style.css'
 import React, { useState, useEffect } from "react";
-import { getOrdersFirebase } from '../../firebase/firebaseFunction'
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import { getOrdersFirebase } from '../firebase/firebaseFunction'
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { deleteDoc, doc } from "firebase/firestore";
-import { db } from "../../firebase/firebaseConfig";
+import { db } from "../firebase/firebaseConfig";
 
 
 const MySwal = withReactContent(Swal)
@@ -28,25 +28,25 @@ function ListNotes() {
 
   const confirmDelete = (id) => {
     MySwal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: '¿Estas seguro?',
+      text: "¡No podrás revertirlo!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Si, Eliminar'
     }).then((result) => {
       if (result.isConfirmed) {
         deleteNotes(id)
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'Eliminado!',
+          'Tu nota ha sido eliminada.',
           'success'
         )
       }
     })
   }
-  
+
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -71,13 +71,13 @@ function ListNotes() {
           return (
 
             <div className='note-list' key={item.id}>
-
+              <section className='add-delete-container'>
+                <Link className='button-delete' to={`/note/${item.id}`}><AiFillEdit /></Link>
+                <button className='button-delete' onClick={() => { confirmDelete(item.id) }}>
+                  <AiFillDelete />
+                </button>
+              </section>
               <p> {item.note} </p>
-              <button onClick={() => { confirmDelete(item.id) }}>
-                <AiOutlineDelete />
-              </button>
-
-              <Link to={`/note/${item.id}`}><AiOutlineEdit></AiOutlineEdit></Link>
             </div>
 
           )

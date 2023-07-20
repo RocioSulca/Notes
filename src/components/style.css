@@ -1,0 +1,153 @@
+.header-note {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.header-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    color: #FFD233;
+    font-size: 30px;
+}
+
+h1 {
+    font-family: cursive;
+    text-align: center;
+}
+
+.add-notes {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    background: rgba(255, 210, 51, 0.74);
+    color: black;
+    padding: 7px;
+    border-radius: 10px;
+    width: 220px;
+    margin-left: 8%;
+}
+
+.button-delete {
+    background-color: rgba(255, 210, 51, 0.74);
+    width: 10%;
+    border-radius: 5px;
+    color: #927204;
+    border: none;
+    font-size: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.notes-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.note-list {
+    background: rgba(255, 210, 51, 0.74);
+    width: 80%;
+    padding: 10px;
+    font-family: cursive;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.note-list>p {
+    margin-top: 0px;
+}
+
+.add-delete-container {
+    display: flex;
+    justify-content: end;
+}
+
+.modal-note {
+    height: 200px;
+    margin: 20px 0px 20px;
+    font-size: 20px;
+    font-family: cursive;
+    border-radius: 10px;
+    background: rgba(243, 198, 40, 0.68);
+    border: none;
+    padding: 10px;
+}
+
+.button-send-func {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    background: #FFD233;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px;
+}
+
+.back-icon {
+    font-size: 30px;
+    color: #FFC700;
+}
+
+.title-container {
+    margin-top: 10px;
+}
+
+.container-button-send {
+    display: flex;
+    justify-content: center;
+}
+
+.content-notes-modal {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .notes-list-container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    .content-notes-modal {
+        align-items: center;
+    }
+    .modal-note {
+        border-radius: 15px;
+        padding: 20px;
+        width: 80%;
+        font-size: 23px;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    .button-send-func {
+        padding: 20px;
+    }
+    .back-icon {
+        font-size: 40px;
+        margin-left: 30px;
+    }
+    .title-container {
+        margin-top: 20px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .notes-list-container {
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+    }
+    .add-notes {
+        padding: 10px;
+        margin-left: 3%;
+    }
+}
